@@ -1,11 +1,7 @@
-from flask import Flask, render_template
+from flask import Flask
+from views import home_bp, about_bp
 
 app = Flask(__name__)
 
-@app.route("/")
-def home():
-    return render_template("home.html")
-
-@app.route("/about")
-def about():
-    return render_template("about.html")
+app.register_blueprint(home_bp)
+app.register_blueprint(about_bp)
