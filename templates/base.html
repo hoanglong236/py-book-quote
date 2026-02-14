@@ -12,13 +12,19 @@
 </head>
 
 <body>
-    <nav>
-        <a href="/">Home</a>
-        <a href="/about">About</a>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="{{ url_for('home.index') }}">PyBook</a>
+            <div>
+                <a class="btn btn-outline-light me-2" href="{{ url_for('auth.login') }}">Login</a>
+                <a class="btn btn-warning" href="{{ url_for('auth.register') }}">Register</a>
+            </div>
+        </div>
     </nav>
-    <hr>
 
-    {% block content %}{% endblock %}
+    <div class="container mt-4">
+        {% block content %}{% endblock %}
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
