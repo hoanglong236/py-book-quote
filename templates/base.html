@@ -12,15 +12,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-            <a class="navbar-brand" href="{{ url_for('home.index') }}">PyBook</a>
-            <div>
-                <a class="btn btn-outline-light me-2" href="{{ url_for('auth.login') }}">Login</a>
-                <a class="btn btn-warning" href="{{ url_for('auth.register') }}">Register</a>
-            </div>
-        </div>
-    </nav>
+    {% include "components/navbar.html" %}
 
     <div class="container mt-4">
         {% block content %}{% endblock %}
