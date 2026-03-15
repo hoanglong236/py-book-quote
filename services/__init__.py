@@ -1,1 +1,1 @@
-from .user_service import register_user
+from .user_service import register_user, authenticate
