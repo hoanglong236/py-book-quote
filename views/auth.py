@@ -11,13 +11,13 @@ def login():
         password = request.form.get("password")
 
         if not username or not password:
-            flash("Username and password are required")
+            flash("Username and password are required", "danger")
             return redirect(url_for("auth.login"))
 
         user = authenticate(username, password)
 
         if not user:
-            flash("Invalid username or password")
+            flash("Invalid username or password", "danger")
             return redirect(url_for("auth.login"))
 
         # prevent session fixation
