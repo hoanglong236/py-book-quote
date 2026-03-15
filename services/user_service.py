@@ -1,3 +1,4 @@
+import sqlite3
 from database import get_connection
 from werkzeug.security import generate_password_hash, check_password_hash
 
@@ -12,10 +13,18 @@ def register_user(username, password):
     """
 
     hashed_password = generate_password_hash(password)
-    cursor.execute(sql, {"username": username, "password": hashed_password})
 
-    conn.commit()
-    conn.close()
+    try:
+        cursor.execute(sql, {"username": username, "password": hashed_password})
+
+        conn.commit()
+        return True
+
+    except sqlite3.IntegrityError:
+        return False
+
+    finally:
+        conn.close()
 
 
 def authenticate(username, password):

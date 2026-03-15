@@ -32,11 +32,25 @@ def login():
 @auth_bp.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
-        username = request.form.get("username")
+        username = request.form.get("username", "").strip()
         password = request.form.get("password")
+        confirm_password = request.form.get("confirmPassword")
 
-        register_user(username, password)
+        if not username or not password or not confirm_password:
+            flash("Please fill in all required fields")
+            return redirect(url_for("auth.register"))
 
+        if password != confirm_password:
+            flash("Passwords do not match")
+            return redirect(url_for("auth.register"))
+
+        success = register_user(username, password)
+
+        if not success:
+            flash("This username is already taken")
+            return redirect(url_for("auth.register"))
+
+        flash("Account created successfully. Please login.", "success")
         return redirect(url_for("auth.login"))
 
     return render_template("auth/register.html")
