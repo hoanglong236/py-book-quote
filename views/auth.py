@@ -7,15 +7,23 @@ auth_bp = Blueprint("auth", __name__)
 @auth_bp.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
-        username = request.form.get("username")
+        username = request.form.get("username", "").strip()
         password = request.form.get("password")
 
+        if not username or not password:
+            flash("Username and password are required")
+            return redirect(url_for("auth.login"))
+
         user = authenticate(username, password)
+
         if not user:
             flash("Invalid username or password")
             return redirect(url_for("auth.login"))
 
+        # prevent session fixation
+        session.clear()
         session["user_id"] = user["id"]
+
         return redirect(url_for("home.index"))
 
     return render_template("auth/login.html")
