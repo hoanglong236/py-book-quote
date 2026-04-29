@@ -1,0 +1,22 @@
+<div class="card book-card shadow-sm">
+    <div class="row g-0 align-items-center">
+        <div class="col-12 col-md-4">
+            <img src="{{ book['image_url']|e }}" class="img-fluid book-card-image" alt="{{ book['title']|e }}">
+        </div>
+        <div class="col-12 col-md-8">
+            <div class="card-body">
+                <h4 class="card-title">{{ book['title']|e }}</h4>
+                <p class="card-text mb-1 small text-muted"><strong>{{ book['author']|e }}</strong></p>
+                <p class="card-text small text-muted">{{ book['genre']|e }} ({{ book['published_year']|e }})</p>
+                <div class="d-flex flex-wrap gap-2 gap-md-3 mt-3">
+                    <a href="/quotes.php?search_term={{ book['title']|e }}" class="btn btn-outline-primary btn-sm">Quotes</a>
+                    <a href="/edit-book.php?id={{ book['id']|e }}" class="btn btn-outline-secondary btn-sm">Edit</a>
+                    <form action="/delete-book.php" method="post" class="delete-book-form m-0" data-book-title="{{ book['title']|e }}">
+                        <input type="hidden" name="id" value="{{ book['id']|e }}">
+                        <button type="submit" class="btn btn-outline-danger btn-sm">Delete</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
