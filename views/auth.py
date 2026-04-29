@@ -23,6 +23,7 @@ def login():
         # prevent session fixation
         session.clear()
         session["user_id"] = user["id"]
+        session["user"] = user["username"]
 
         return redirect(url_for("home.index"))
 
@@ -54,3 +55,10 @@ def register():
         return redirect(url_for("auth.login"))
 
     return render_template("auth/register.html")
+
+
+@auth_bp.route("/logout")
+def logout():
+    session.clear()
+    flash("You have been logged out.", "info")
+    return redirect(url_for("home.index"))
