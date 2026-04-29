@@ -4,19 +4,19 @@
 
 {% block content %}
 
-<section class="h-100">
-    <div class="container py-5 h-100">
-        <div class="row d-flex justify-content-center align-items-center h-100">
-            <div class="col-12 col-lg-9 col-xl-6">
-                <div class="card">
-                    <div class="card-header">
-                        Register
+<section class="auth-page py-4">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-sm-10 col-md-8 col-lg-6">
+                <div class="card shadow-sm rounded-4">
+                    <div class="card-header bg-white border-0 py-4">
+                        <h3 class="mb-0">Register</h3>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body px-4 px-sm-5 pb-5">
                         {% with messages = get_flashed_messages() %}
                             {% if messages %}
                                 {% for message in messages %}
-                                <div class="alert alert-danger mb-2 py-1">
+                                <div class="alert alert-danger mb-3 py-2">
                                     {{ message }}
                                 </div>
                                 {% endfor %}
@@ -37,7 +37,7 @@
                                 <input type="password" class="form-control" id="confirmPassword" name="confirmPassword"
                                     required>
                             </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-primary btn-lg w-100">Submit</button>
                         </form>
                     </div>
                 </div>

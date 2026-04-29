@@ -1,7 +1,109 @@
-body {
-    font-family: Arial, sans-serif;
+:root {
+    color-scheme: light;
+    font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    color: #1f2937;
+    background-color: #f8fafc;
 }
 
-nav a {
-    margin-right: 10px;
+body {
+    min-height: 100vh;
+    margin: 0;
+    background-color: #f8fafc;
+    font-family: inherit;
 }
+
+.navbar {
+    box-shadow: 0 1px 12px rgba(0, 0, 0, 0.12);
+}
+
+.navbar-brand {
+    font-weight: 700;
+    letter-spacing: 0.03em;
+}
+
+.navbar-nav .nav-link {
+    padding: 0.5rem 0.75rem;
+}
+
+.book-card {
+    overflow: hidden;
+    border: none;
+    border-radius: 1rem;
+}
+
+.book-card-image {
+    width: 100%;
+    min-height: 180px;
+    object-fit: cover;
+}
+
+.book-card .card-body {
+    padding: 1.25rem;
+}
+
+.book-card .card-title {
+    font-size: 1.1rem;
+    margin-bottom: 0.35rem;
+}
+
+.book-card .card-text {
+    line-height: 1.5;
+}
+
+.book-card .card-text.small {
+    color: #6b7280;
+}
+
+.delete-book-form button {
+    min-width: 84px;
+}
+
+@media (max-width: 767.98px) {
+    .navbar-nav .nav-link {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .book-card-image {
+        min-height: 220px;
+    }
+
+    .container,
+    .container-fluid {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .btn {
+        transition: transform 0.15s ease-in-out;
+    }
+
+    .btn:active {
+        transform: scale(0.98);
+    }
+}
+
+.auth-page {
+    min-height: auto;
+}
+
+.auth-page .card {
+    border: none;
+    overflow: hidden;
+}
+
+.form-control {
+    min-height: 3rem;
+    border-radius: 0.75rem;
+}
+
+.btn-lg {
+    min-height: 3.2rem;
+}
+
+@media (min-width: 768px) {
+    .container-fluid {
+        max-width: 1140px;
+    }
+}
+
