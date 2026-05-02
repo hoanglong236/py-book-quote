@@ -1,7 +1,6 @@
 import pytest
 import sqlite3
 import os
-import sys
 import tempfile
 from app import app
 
