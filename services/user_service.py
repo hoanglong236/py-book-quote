@@ -11,8 +11,12 @@ def register_user(username, password):
         password: The plain text password to hash and store.
 
     Returns:
-        True if registration was successful, False if username already exists.
+        True if registration was successful, False if username already exists or validation fails.
     """
+    # Validate inputs
+    if not username or not password:
+        return False
+    
     conn = get_connection()
     cursor = conn.cursor()
 
@@ -47,6 +51,10 @@ def authenticate(username, password):
         A user dictionary with id and username if authentication succeeds,
         otherwise None.
     """
+    # Validate inputs
+    if not username or not password:
+        return None
+        
     conn = get_connection()
     cursor = conn.cursor()
 
@@ -57,5 +65,6 @@ def authenticate(username, password):
     conn.close()
 
     if user and check_password_hash(user["password"], password):
-        return user
+        # Return only id and username (not password)
+        return {"id": user["id"], "username": user["username"]}
     return None
